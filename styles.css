@@ -46,6 +46,22 @@ form{
 	color: var(--white);
 }
 
+.form-control:focus, .form-select:focus{
+	background: 
+	    linear-gradient(white 0 0) padding-box,
+	    linear-gradient(hsl(249, 99%, 64%), hsl(278, 94%, 30%)) border-box;
+	border: 2px solid transparent;
+	border-radius: 6px;
+}
+
+.input-error{
+	border: 2px solid var(--red);
+}
+
+.form-control-error{
+	color: var(--red);
+}
+
 .bank-card{
 	/*width: 447px;
 	height: 245px;*/
