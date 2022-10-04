@@ -115,26 +115,39 @@ btnConfirm.addEventListener("click", () => {
 		ready = false;
 		setErrorAlert(inputCardholderName, cardholder_name_div, "Can't be blank");
 	}
+
 	if(inputCardNumber.value == ""){
 		ready = false;
 		setErrorAlert(inputCardNumber, cardnumber_div, "Can't be blank");
 	}
-	if(!inputCardNumber.value.match(/^[0-9 ]*$/)){
-		ready = false;
-		setErrorAlert(inputCardNumber, cardnumber_div, "Wrong Format, numbers only")
+	else{
+		if(!inputCardNumber.value.match(/^[0-9 ]*$/)){
+			ready = false;
+			setErrorAlert(inputCardNumber, cardnumber_div, "Wrong Format, numbers only");
+		}
+		else{
+			if(inputCardNumber.value.replace(/\s+/g, '').length != 16){
+				ready = false;
+				setErrorAlert(inputCardNumber, cardnumber_div, "Card Number must have only 16 digits");
+			}
+		}
 	}
+
 	if(inputExpDate_M.value == ""){
 		ready = false;
 		setErrorAlert(inputExpDate_M, expdate_div, "Can't be blank");
 	}
+
 	if(inputExpDate_Y.value == ""){
 		ready = false;
 		setErrorAlert(inputExpDate_Y, expdate_div, "Can't be blank");
 	}
+
 	if(!inputCVCNumber.value.match(/^[0-9 ]*$/)){
 		ready = false;
-		setErrorAlert(inputCVCNumber, cvc_number_div, "Wrong Format, numbers only")
+		setErrorAlert(inputCVCNumber, cvc_number_div, "Wrong Format, numbers only");
 	}
+
 	if(inputCVCNumber.value == ""){
 		ready = false;
 		setErrorAlert(inputCVCNumber, cvc_number_div, "Can't be blank");
@@ -143,7 +156,6 @@ btnConfirm.addEventListener("click", () => {
 	if(ready){
 		input_form.classList.add("d-none");
 		thank_you_div.classList.remove("d-none");
-		
 	}
 })
 
