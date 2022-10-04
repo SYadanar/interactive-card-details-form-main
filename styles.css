@@ -92,6 +92,7 @@ main{
 	height: 245px;*/
 	/*width: 25%;
 	height: 30%;*/
+
 	width: fit-content;
 
 	border-radius: 10px;
@@ -100,14 +101,16 @@ main{
 
 	color: var(--white);
 
-	background-size: cover;
-	background-repeat: no-repeat;
+	/*background-size: cover;
+	background-repeat: no-repeat;*/
 
 	position: absolute;
 }
 
-.bank-card img{
+.bank-card .card-bg-img {
 	position: relative;
+
+	width: 100%;
 }
 
 .card-body{
@@ -120,9 +123,6 @@ main{
 }
 
 .card-front{
-	/*background-image: url(images/bg-card-front.png);*/
-
-	/*position: absolute;*/
 	top: 10%;
 	left: 7%;
 }
@@ -140,9 +140,6 @@ main{
 }
 
 .card-back{
-	/*background-image: url(images/bg-card-back.png);*/
-
-	/*position: absolute;*/
 	top: 50%;
 	left: 13%;
 }
@@ -162,13 +159,114 @@ main{
 .attribution a { color: hsl(228, 45%, 44%); }
 
 
+
+
 @media only screen and (max-width: 768px){
+	main{
+		overflow-y: unset;
+	}
+
+	picture img{
+		width: 100vw;
+	}
+
 	.form-area{
 		height: fit-content;
-		margin-top: 100px;
+		margin-top: 150px;
 	}
+
 	.form-content{
 		width: 90%;
 		margin: 0 auto;
+	}
+
+	.bank-card{
+		width: 80%;
+
+		position: absolute;
+	}
+
+	.card-front{
+		top: 30%;
+		left: 7%;
+
+		z-index: 2;
+	}
+	.card-back{
+		top: 5%;
+		left: auto;
+		right: 5%;
+
+		z-index: 1;
+	}
+}
+
+@media only screen and (max-width: 576px){
+	.card-front{
+		top: 25%;
+	}
+
+	.card-back{
+		top: 5%;
+	}
+
+	.form-area{
+		margin-top: 120px;
+	}
+}
+
+@media only screen and (max-width: 505px){
+	.card-number{
+		font-size: 22px;
+	}
+
+	.cardholder-name, .exp-date{
+		font-size: 14px;
+	}
+
+	.card-logo{
+		padding-bottom: 20px !important;
+	}
+}
+
+@media only screen and (max-width: 450px){
+	.card-front{
+		top: 22%;
+	}
+
+	.card-back{
+		top: 5%;
+	}
+
+	.card-logo{
+		width: 28%;
+
+		padding-bottom: 10px !important;
+	}
+
+	.card-logo img{
+		height: 100%;
+		width: 100%;
+	}
+
+	.card-number{
+		font-size: 20px;
+		letter-spacing: 1.5px;
+		margin-bottom: 5px;
+	}
+
+	.cardholder-name, .exp-date{
+		font-size: 12px;
+		letter-spacing: 1.5px;
+	}
+}
+
+@media only screen and (max-width: 375px){
+	.card-number{
+		letter-spacing: 1px;
+	}
+
+	.cardholder-name, .exp-date{
+		letter-spacing: 1px;
 	}
 }
