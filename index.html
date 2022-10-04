@@ -20,11 +20,11 @@
          <div class="col-auto p-0">
             <picture>
                <source media="(min-width: 768px)" srcset="images/bg-main-desktop.png">
-               <img src="images/bg-main-mobile.png" alt="Background Image">
+               <img src="images/bg-main-mobile.png" alt="Background Image" class="vw-100">
             </picture>
          </div>
          <div class="col d-flex justify-content-end align-items-center form-area">
-            <form>
+            <form id="input_form" class="form-content">
                <div class="mb-4" id="cardholder_name_div">
                   <label for="inputCardholderName" class="form-label">Cardholder Name</label>
                   <input type="text" name="" id="inputCardholderName" class="form-control shadow-none" placeholder="e.g. Jane Appleseed">
@@ -66,12 +66,24 @@
                   <button type="button" class="btn w-100 py-2" id="btn-confirm">Confirm</button>
                </div>
             </form>
+
+            <!-- Completed state start -->
+            <div class="form-content text-center d-none" id="thank_you_div">
+               <div class="mb-4">
+                  <img src="images/icon-complete.svg" alt="Complete Icon">
+               </div>
+               <span class="text-uppercase">Thank you!</span>
+               <p class="mt-2 mb-5">We've added your card details</p>
+               <div class="d-block">
+                  <button type="button" class="btn w-100 py-2" id="btn-continue">Continue</button>
+               </div>
+            </div>
          </div>
       </div>
 
       <!-- Card Area - START -->
       <div class="bank-card card-front">
-         <img src="images/bg-card-front.png">
+         <img src="images/bg-card-front.png" alt="Card Frond Side PNG">
          <div class="card-body w-100 h-100 px-4 py-4">
             <div class="card-logo pb-5 mt-1">
                <img src="images/card-logo.svg" alt="Card Logo">
@@ -89,7 +101,7 @@
       </div>
 
       <div class="bank-card card-back">
-         <img src="images/bg-card-back.png">
+         <img src="images/bg-card-back.png" alt="Card Back Side PNG">
          <div class="card-body">
             <p class="card-cvc" id="cvc_number">000</p>
          </div>
@@ -99,12 +111,6 @@
 
    <!-- Footer Section - START -->
    <footer class="container-fluid mt-5">
-
-      <!-- Completed state start -->
-      Thank you!
-      We've added your card details
-      Continue
-
 
       <div class="attribution">
          Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 

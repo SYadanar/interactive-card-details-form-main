@@ -17,6 +17,11 @@ exp_month = document.getElementById("exp_month");
 exp_year = document.getElementById("exp_year");
 cvc_number = document.getElementById("cvc_number");
 
+thank_you_div = document.getElementById("thank_you_div");
+input_form = document.getElementById("input_form");
+
+btnContinue = document.getElementById("btn-continue");
+
 
 
 /*          Add Options to Drapdowns          */
@@ -49,6 +54,8 @@ for (let i = 0; i <= (parseInt(currentYear) + 5); i++){
 
 inputCardholderName.addEventListener("keyup", () => {
 	cardholder_name.innerHTML = inputCardholderName.value;
+
+	removeErrorAlart(inputCardholderName, cardholder_name_div);
 })
 
 inputCardNumber.addEventListener("keyup", () => {
@@ -58,6 +65,8 @@ inputCardNumber.addEventListener("keyup", () => {
 		cardNum = inputCardNumber.value.replace(/\s+/g, '');	/* Remove Spaces */
 		cardNum = cardNum.match(/.{1,4}/g).join(" ");	/* Add Space after every 4 digits*/
 		card_number.innerHTML = inputCardNumber.value = cardNum;
+
+		removeErrorAlart(inputCardNumber, cardnumber_div);
 	}
 })
 
@@ -66,6 +75,8 @@ inputCVCNumber.addEventListener("keyup", () => {
 		setErrorAlert(inputCVCNumber, cvc_number_div, "Wrong Format, numbers only")
 	} else{
 		cvc_number.innerHTML = inputCVCNumber.value;
+
+		removeErrorAlart(inputCVCNumber, cvc_number_div);
 	}
 })
 
@@ -75,10 +86,22 @@ inputCVCNumber.addEventListener("keyup", () => {
 
 inputExpDate_M.addEventListener("change", () => {
 	exp_month.innerHTML = inputExpDate_M.value;
+
+	if(inputExpDate_Y.value == ""){
+		removeInputErrorClass(inputExpDate_M);
+	} else{
+		removeErrorAlart(inputExpDate_M, expdate_div);
+	}
 })
 
 inputExpDate_Y.addEventListener("change", () => {
 	exp_year.innerHTML = inputExpDate_Y.value;
+
+	if(inputExpDate_M.value == ""){
+		removeInputErrorClass(inputExpDate_Y);
+	} else{
+		removeErrorAlart(inputExpDate_Y, expdate_div);
+	}
 })
 
 
@@ -86,30 +109,47 @@ inputExpDate_Y.addEventListener("change", () => {
 /*          OnClick Events          */
 
 btnConfirm.addEventListener("click", () => {
+	var ready = true;
+
 	if(inputCardholderName.value == ""){
+		ready = false;
 		setErrorAlert(inputCardholderName, cardholder_name_div, "Can't be blank");
 	}
-
 	if(inputCardNumber.value == ""){
+		ready = false;
 		setErrorAlert(inputCardNumber, cardnumber_div, "Can't be blank");
 	}
 	if(!inputCardNumber.value.match(/^[0-9 ]*$/)){
+		ready = false;
 		setErrorAlert(inputCardNumber, cardnumber_div, "Wrong Format, numbers only")
 	}
-
 	if(inputExpDate_M.value == ""){
+		ready = false;
 		setErrorAlert(inputExpDate_M, expdate_div, "Can't be blank");
 	}
 	if(inputExpDate_Y.value == ""){
+		ready = false;
 		setErrorAlert(inputExpDate_Y, expdate_div, "Can't be blank");
 	}
-
 	if(!inputCVCNumber.value.match(/^[0-9 ]*$/)){
+		ready = false;
 		setErrorAlert(inputCVCNumber, cvc_number_div, "Wrong Format, numbers only")
 	}
 	if(inputCVCNumber.value == ""){
+		ready = false;
 		setErrorAlert(inputCVCNumber, cvc_number_div, "Can't be blank");
 	}
+
+	if(ready){
+		input_form.classList.add("d-none");
+		thank_you_div.classList.remove("d-none");
+		
+	}
+})
+
+btnContinue.addEventListener("click", () => {
+	input_form.classList.remove("d-none");
+	thank_you_div.classList.add("d-none");
 })
 
 
@@ -117,4 +157,13 @@ btnConfirm.addEventListener("click", () => {
 function setErrorAlert(selfID, parentID, Msg){
 	selfID.classList.add("input-error");
 	parentID.getElementsByClassName("form-control-error")[0].innerHTML = Msg;
+}
+
+function removeInputErrorClass(selfID){
+	selfID.classList.remove("input-error");
+}
+
+function removeErrorAlart(selfID, parentID){
+	removeInputErrorClass(selfID);
+	parentID.getElementsByClassName("form-control-error")[0].innerHTML = "";
 }
