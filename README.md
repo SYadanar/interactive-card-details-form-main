@@ -32,8 +32,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [URL](https://www.frontendmentor.io/solutions/interactive-card-detail-form-using-bootstrap-5-f2Bo58uCug)
+- Live Site URL: [URL](https://interactive-card-details-form-main-seven.vercel.app/)
 
 ## My process
 
